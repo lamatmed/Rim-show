@@ -1,0 +1,50 @@
+{% extends 'shop/base.html' %} {% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <form class="card card-sm">
+            <div class="card-body row no-gutters align-items-center">
+                <div class="col">
+                    <input type="search" name="item-name" placeholder="Entrer le nom du prouduit que vous cherchez" class="form-control form-control-borderless"></div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-success">Recherche</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-3">
+        <div class="card">
+            <img src="{{ product.image }}" class="card-img-top" alt="">
+            <div class="card-body">
+                <div class="card-title"> {{ product.title }}</div>
+                <div style="color:blue" class="card-text">UM {{ product.price }}</div>
+                <a class="btn btn-warning" href="{{ product.id }}">Voir</a>
+                <button class="btn btn-success">Ajouter</button>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="row mt-3">
+    <div class="col-md-3 offset-md-4">
+        <ul class="pagination">
+            {% if products.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ products.previous_page_number }}">Precedent</a>
+            </li>
+            {% endif %}
+            <li class="page-item active">
+                <a class="page-link" href="?page={{ products.number }}">{{ products.number }}</a>
+            </li> {% if products.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ products.next_page_number }}">Suivant</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+</div>{% endblock %}
