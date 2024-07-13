@@ -25,9 +25,10 @@ class Product (models.Model):
 
 class Commande(models.Model):
     items = models.CharField(max_length=300)
+    total = models.CharField(max_length=300)
     nom = models.CharField(max_length=150)
     email = models.EmailField()
-    adresse = models.CharField(max_length=200)
+    adresse = models.CharField(max_length=200) 
     ville = models.CharField(max_length=200)
     pays = models.CharField(max_length=300)
     zipcode = models.CharField(max_length=300)

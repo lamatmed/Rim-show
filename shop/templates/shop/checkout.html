@@ -39,11 +39,17 @@
                   <option>France</option>
                   <option>USA</option>
                   <option>Angola</option>
+                  <option>UAE</option>
+                  <option>Belgique</option>
                 </select>
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputZip">Zip</label>
                     <input name="zipcode" type="text" class="form-control" id="zipcode" placeholder="Zip">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputZip">Somme total a payer</label>
+                    <input name="total" type="readonly" class="form-control" id="total" placeholder="Zip">
                 </div>
             </div>
 
@@ -57,15 +63,28 @@
     } else {
         panier = JSON.parse(localStorage.getItem('panier'));
     }
+    var total = 0;
+    var nombre = 0;
     for (item in panier) {
         let nom = panier[item][1];
         let quanitite = panier[item][0];
-        let itemString = `  <li class="list-group-item d-flex justify-content-between align-items-center">
+        let prix = panier[item][2];
+        nombre += quanitite;
+        total += prix;
+        let itemString = `<li class="list-group-item d-flex justify-content-between align-items-center">
               ${nom}
-               <span class="badge badge-primary badge-pill"> QTE:   ${quanitite}</span>
+              <span class="badge badge-primary badge-pill"> QTE ${quanitite}</span>
+              <span class="badge badge-warning badge-pill"> UM ${prix}</span>
                </li>`;
         $('#item-list').append(itemString);
     }
+    let itemNombre = `<li class="list-group-item d-flex justify-content-between align-items-center">
+        <b class="bg-danger">PRIX ET QUANTITE TOTAL:</b>
+        <span class="badge badge-danger badge-pill"> QTE ${nombre}</span>
+        Total:<span class="badge badge-danger badge-pill"> UM  ${total}</span>
+         </li>`;
+    $('#item-list').append(itemNombre);
+    $('#total').val(total);
     $('#items').val(JSON.stringify(panier));
 </script>
 <div>
