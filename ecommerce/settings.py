@@ -84,8 +84,9 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
    # }
 #}
 DATABASES = {
-    'default': env.db('DATABASE_URL'),
-}
+    'default': dj_database_url.config()
+    }
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -120,7 +121,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/static/' 
+STATIC_URL = '/staticfiles/' 
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_DIRS =['static']
 # Default primary key field type
