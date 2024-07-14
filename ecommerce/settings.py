@@ -11,11 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
 import os
-
-with open('.envs/.local/.postgres') as fh:
-    os.environ.update(line.strip().split('=', 1) for line in fh)
 import django_heroku
 import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
