@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-cjce5g%-(-h#budivay0ft(rffn+*ab&1olcg&k=yr(0uxul*f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://rimshop-c629a5a77058.herokuapp.com/','127.0.0.1']
+ALLOWED_HOSTS = ['https://rimtop-bfc7fc371b2c.herokuapp.com/','127.0.0.1']
 
 
 # Application definition
